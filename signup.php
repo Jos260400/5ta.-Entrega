@@ -2,8 +2,11 @@
 <html>
 <head>
     <title>Welcome to MYCHATAPP</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="signup.css";
 </head>
 <body>
+    <center>
     <div id="SignUp Div">
         <form id="form2" method="post" action="Insert User.php">
             <h2>SignUp Form</h2>
@@ -21,7 +24,7 @@
                 </tr>
 
                 <tr>
-                    <td><input type="submit" value="SignUp"></td>
+                    <td><input id="btn2" type="submit" value="SignUp"></td>
                 </tr>
                 <?php
                     if(isset($_GET['success'])){
@@ -35,5 +38,6 @@
             </table>
         </form>
     </div> 
+    </center>
 </body>
 </html>

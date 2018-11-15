@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="home.css">
 <?php
 
 class user{
@@ -94,16 +95,28 @@ class chat{
 
     public function InsertChatMessage(){
         include"conn.php";
-        $req=$bdd->prepare("INSERT INTO chats(ChatUserId,ChatText) VALUES(:ChatUserId,:ChatText)");
+        $req=$bdd->prepare("INSERT INTO chats(ChatUserId,ChatText,Estado_de_Chat) VALUES(:ChatUserId,:ChatText,1)");
         $req->execute(array(
             'ChatUserId'=>$this->getChatUserId(),
             'ChatText'=>$this->getChatText()
 
         ));
     }
+
+    public function DeleteMessage(){
+        include"conn.php";
+        // Estado_de_Chat= 0 significa que el estado esta borrado
+         // Estado_de_Chat= 1 significa que el estado esta activo
+        $req=$bdd->prepare("UPDATE chats SET Estado_de_Chat= 0 WHERE ChatUserId=:ChatUserId)");
+        $req->execute(array(
+            'ChatUserId'=>$this->getChatUserId()
+        ));
+
+
+    }
     public function DisplayMessage(){
         include "conn.php";
-        $ChatReq=$bdd->prepare("SELECT * FROM chats ORDER BY ChatId");
+        $ChatReq=$bdd->prepare("SELECT * FROM chats WHERE Estado_de_Chat = 1 ORDER BY ChatId");
         $ChatReq->execute();
 
         while($DataChat=$ChatReq->fetch()){

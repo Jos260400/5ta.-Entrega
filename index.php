@@ -4,8 +4,10 @@
     <title>Welcome to MYCHATAPP</title>
 </head>
 <body>
+    <center>
     <div id="LoginDiv">
         <form id="form1" method="post" action="UserLogin.php">
+            <link rel="stylesheet" type="text/css" href="login.css">
             <h2>Login Form</h2>
             <table>
                 <tr>
@@ -15,7 +17,7 @@
                     <td><input type="password" name="UserPasswordLogin" placeholder="Enter Your Password" required></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Login"></td>
+                    <td><input id="btn1" type="submit" value="Login"></td>
                 </tr>
                 <?php
                     if(isset($_GET['error'])){
@@ -30,5 +32,6 @@
             </table>
         </form>
     </div>
+    </center>
 </body>
 </html>
